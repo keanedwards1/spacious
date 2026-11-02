@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aether — Crewed Interplanetary Expeditions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.pixabay.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=JetBrains+Mono:wght@300;400&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="locked">
+
+  <div class="cursor" aria-hidden="true"><span class="cursor-ring"></span><span class="cursor-dot"></span></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ================= INTRO ================= -->
+  <div id="intro">
+    <canvas id="stars" aria-hidden="true"></canvas>
+
+    <!-- 00 · Systems check -->
+    <section class="scene" id="loader">
+      <div class="counter" aria-hidden="true">
+        <span class="digit"><span>0</span></span><span class="digit"><span>0</span></span><span class="digit"><span>0</span></span>
+      </div>
+      <div class="loader-line"><span class="track"></span><span class="bar"></span><i class="loader-dot"></i></div>
+      <div class="loader-foot">
+        <p class="loader-label mono">Running systems check</p>
+        <div class="gate">
+          <p class="gate-note mono">All systems nominal · Headphones recommended</p>
+          <div class="gate-actions">
+            <button type="button" class="gate-btn primary mono" data-sound="on">
+              <span class="eq"><i></i><i></i><i></i><i></i></span>Engage with sound
+            </button>
+            <button type="button" class="gate-btn mono" data-sound="off">Continue silently</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 · Departure -->
+    <section class="scene" id="warp" aria-hidden="true">
+      <p class="whisper mono" data-split>Somewhere beyond the last light<br>there is a door</p>
+      <div class="wormhole"><div class="wormhole-spin"><img data-img="wormhole" alt=""></div></div>
+    </section>
+
+    <!-- 02 · Eclipse -->
+    <section class="scene" id="eclipse" aria-hidden="true">
+      <div class="eclipse-media"><img data-img="eclipse" alt=""></div>
+      <h1 class="title"></h1>
+      <p class="subtitle mono" data-split>Crewed expeditions beyond the edge of the sky</p>
+    </section>
+
+    <!-- 03 · Orbit -->
+    <section class="scene" id="earth" aria-hidden="true">
+      <div class="slices"></div>
+      <div class="flare"></div>
+      <h2 class="caption">
+        <span class="mask"><span>Every horizon</span></span>
+        <span class="mask"><span><em>is a beginning.</em></span></span>
+      </h2>
+    </section>
+
+    <!-- 04 · The Route -->
+    <section class="scene" id="route" aria-hidden="true">
+      <div class="sun"><img data-img="sun" alt=""></div>
+
+      <div class="body moon" data-depth="18">
+        <div class="disc"><img data-img="moonDisc" alt=""></div>
+        <div class="tag"><i class="reticle"></i><i class="leader"></i>
+          <div class="tag-text"><span class="mono">Target 01</span><b data-name="Luna"></b><span class="mono">384,400 km · 3 days</span></div>
+        </div>
+      </div>
+      <div class="body mars" data-depth="34">
+        <div class="disc"><img data-img="marsDisc" alt=""></div>
+        <div class="tag"><i class="reticle"></i><i class="leader"></i>
+          <div class="tag-text"><span class="mono">Target 02</span><b data-name="Mars"></b><span class="mono">225M km · 7 months</span></div>
+        </div>
+      </div>
+      <div class="body saturn" data-depth="48">
+        <div class="disc"><img data-img="saturn" alt=""></div>
+        <div class="tag"><i class="reticle"></i><i class="leader"></i>
+          <div class="tag-text"><span class="mono">Target 03</span><b data-name="Saturn"></b><span class="mono">1.2B km · 6 years</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="flash" aria-hidden="true"></div>
+
+    <!-- HUD -->
+    <div class="hud">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="hud-tl mono" aria-hidden="true">
+        <span class="hud-brand">Aether</span>
+        <span class="hud-chapter"><span class="hud-num">00</span> — <span class="hud-name">Systems check</span></span>
+      </div>
+      <div class="hud-tr mono">
+        <button type="button" class="sound-toggle mono" aria-pressed="false">
+          <span class="eq"><i></i><i></i><i></i><i></i></span><span class="sound-label">Sound off</span>
+        </button>
+        <span class="rec" aria-hidden="true"></span><span class="hud-time" aria-hidden="true">00:00:00</span>
+      </div>
+      <div class="hud-bl mono" aria-hidden="true"></div>
+      <div class="hud-progress" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <button class="skip mono" type="button">Skip intro <span>→</span></button>
+    </div>
+  </div>
+
+  <!-- ================= SITE ================= -->
+  <main id="site">
+    <section class="hero">
+      <div class="hero-media"><div class="hero-bg" data-img="earthrise"></div></div>
+      <div class="hero-shade"></div>
+
+      <nav>
+        <a href="#" class="logo" data-nav>Aether</a>
+        <ul class="nav-links">
+          <li data-nav><a href="#">Missions</a></li>
+          <li data-nav><a href="#">Fleet</a></li>
+          <li data-nav><a href="#">Training</a></li>
+          <li data-nav><a href="#">Manifesto</a></li>
+        </ul>
+        <a href="#" class="nav-cta mono" data-nav>Reserve a seat</a>
+      </nav>
+
+      <div class="hero-content">
+        <h1>
+          <span class="mask"><span>Where the sky</span></span>
+          <span class="mask"><span><em>ends,</em> we begin.</span></span>
+        </h1>
+        <div class="actions" data-fade>
+          <button type="button" class="btn btn-start replay"><span class="btn-icon" aria-hidden="true">↺</span>Start over</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
